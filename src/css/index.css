@@ -32,34 +32,45 @@ span {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  border: 5px solid black;
-  border-bottom-color: #ff3d00;
   display: inline-block;
-  box-sizing: border-box;
   position: relative;
-  animation: rotate 1s linear infinite;
+  border: 3px solid;
+  border-color: #fff #fff transparent;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
-.loader::before,
 .loader::after {
   content: '';
   box-sizing: border-box;
   position: absolute;
-  inset: 0px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  border: 3px solid;
+  border-color: transparent #ff3d00 #ff3d00;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  border: 5px solid #fff;
-  animation: prixClipFix 2s linear infinite;
-}
-.loader::after {
-  border-color: #ff3d00;
-  animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
-  inset: 6px;
+  animation: rotationBack 0.5s linear infinite;
+  transform-origin: center center;
 }
 
-@keyframes rotate {
+@keyframes rotation {
   0% {
     transform: rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes rotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
   }
 }

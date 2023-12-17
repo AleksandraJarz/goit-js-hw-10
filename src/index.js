@@ -23,4 +23,26 @@ fetchBreeds()
     breeds.style.display = 'block';
     loader.style.display = 'none';
   })
-  .catch(errpr => Notiflix.Notify.failure('Error loading breeds'));
+  .catch(error => Notiflix.Notify.failure('Error loading breeds'));
+
+//informacja o kocie
+breeds.addEventListener('change', event => {
+  const breedId = event.target.value;
+  catInfo.style.display = 'none';
+  loader.style.display = 'block';
+  fetchCatByBreed(breedId)
+    .then(catData => {
+      catInfo.innerHTML = `
+        <div>
+        <img width="300px" src="${catData[0].url}"/>
+        </div>
+        <div>
+            <h2>Name: ${catData[0].breeds[0].name}</h2>
+            <p><span>Description:</span> ${catData[0].breeds[0].description}</p>
+            <p><span>Temperament:</span> ${catData[0].breeds[0].temperament}</p>
+        </div>`;
+      loader.style.display = 'none';
+      catInfo.style.display = 'flex';
+    })
+    .catch(error => Notiflix.Notify.failure('Error loading cat info'));
+});

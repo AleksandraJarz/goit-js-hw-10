@@ -1,7 +1,6 @@
 import Notiflix from 'notiflix';
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 
-// wyszukiwanie elementów DOM
 const breeds = document.querySelector('.breed-select');
 const catInfo = document.querySelector('.cat-info');
 const loader = document.querySelector('.loader');
@@ -9,7 +8,7 @@ const error = document.querySelector('.error');
 
 error.style.display = 'none';
 
-// tworzenie listy ras kotów
+// lista ras kotów
 breeds.style.display = 'none';
 fetchBreeds()
   .then(data => {
@@ -22,7 +21,7 @@ fetchBreeds()
   })
   .catch(error => Notiflix.Notify.failure('Error loading breeds'));
 
-// nasłuchiwanie formularza i wyświetlanie info o kocie
+//  info o kocie
 breeds.addEventListener('change', event => {
   const breedId = event.target.value;
   catInfo.style.display = 'none';

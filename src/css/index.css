@@ -35,7 +35,7 @@ span {
   display: inline-block;
   position: relative;
   border: 3px solid;
-  border-color: #fff #fff transparent;
+  border-color: 5px solid black;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
 }
